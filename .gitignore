@@ -1,0 +1,14 @@
+*.bin
+*.elf
+*.hex
+*.log
+*.o
+*.map
+.vscode/*
+build/
+obj/
+!*.svd
+!.vscode/launch.json
+!.vscode/tasks.json
+!.vscode/c_cpp_properties.json
+!.vscode/settings.json
