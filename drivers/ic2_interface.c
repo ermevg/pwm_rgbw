@@ -1,5 +1,5 @@
 /**
-* @file i2c_interface.c
+* @file ic2_interface.c
 * @brief I2C functions description
 * @note In a real implementation these functions would comfigure hardware registers
 * @author [Ermakov Evgeniy]

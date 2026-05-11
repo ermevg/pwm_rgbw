@@ -1,5 +1,5 @@
 /**
-* @file i2c_interface.h
+* @file ic2_interface.h
 * @brief I2C API for RGBW LED driver
 * @author [Ermakov Evgeniy]
 * @date 10.05.2026
