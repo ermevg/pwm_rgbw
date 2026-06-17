@@ -25,6 +25,7 @@ static RGBW_Error_t RGBW_write_reg(I2C_Ch_t i2c_ch, uint8_t reg, uint8_t data)
     }
     if(I2C_Write(i2c_ch, data_buf, DATA_LENGTH) != I2C_ERR_SUCCESS)
     {
+        (void)I2C_Stop(i2c_ch);
         return RGBW_ERR_I2C;
     }
     if(I2C_Stop(i2c_ch) != I2C_ERR_SUCCESS)
@@ -116,14 +117,18 @@ RGBW_Error_t RGBW_Set_RGB_Color(I2C_Ch_t i2c_ch, uint8_t red, uint8_t green, uin
 {
     RGBW_Error_t status;
 
-    status = RGBW_SetBrightness(i2c_ch, RGBW_CH_D1, red);
+    status = RGBW_write_reg(i2c_ch, REG_PWM_1 + RGBW_CH_D1, red);
     if(status != RGBW_ERR_SUCCESS) return status;
     
-    status = RGBW_SetBrightness(i2c_ch, RGBW_CH_D2, green);
+    status = RGBW_write_reg(i2c_ch, REG_PWM_1 + RGBW_CH_D2, green);
     if(status != RGBW_ERR_SUCCESS) return status;
     
-    status = RGBW_SetBrightness(i2c_ch, RGBW_CH_D3, blue);
+    status = RGBW_write_reg(i2c_ch, REG_PWM_1 + RGBW_CH_D3, blue);
     if(status != RGBW_ERR_SUCCESS) return status;
+
+    status = RGBW_write_reg(i2c_ch, REG_PWM_UPD, UPD_CMD);
+    if(status != RGBW_ERR_SUCCESS) return status;
+
     
     return status;
 }

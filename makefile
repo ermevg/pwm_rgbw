@@ -15,7 +15,7 @@ DEBUG_FLAGS = -g
 INC_DIRS = $(addprefix -I, . sys_init drivers)
 
 # Добавил -ffunction-sections для оптимизации -Wall -Wextra все варнинги
-CFLAGS = -mcpu=$(MCU) -mthumb -Wall -Wextra $(DEBUG_FLAGS) $(OPT) -ffunction-sections -fdata-sections -MMD -MP -std=c99
+CFLAGS = -mcpu=$(MCU) -mthumb -Wall -Wextra $(DEBUG_FLAGS) $(OPT) -ffunction-sections -fdata-sections -MMD -MP -std=c99 -Werror -pedantic
 CFLAGS +=$(INC_DIRS)
 ASFLAGS = -mcpu=$(MCU) -mthumb $(DEBUG_FLAGS) -c
 
